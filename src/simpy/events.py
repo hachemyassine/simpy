@@ -144,7 +144,7 @@ class Event(object):
         self._value = event._value
         self.env.schedule(self)
 
-    def succeed(self, value=None):
+    def succeed(self, value=None, delay=0):
         """Set the event's value, mark it as successful and schedule it for
         processing by the environment. Returns the event instance.
 
@@ -156,7 +156,7 @@ class Event(object):
 
         self._ok = True
         self._value = value
-        self.env.schedule(self)
+        self.env.schedule(self,delay=delay)
         return self
 
     def fail(self, exception):
